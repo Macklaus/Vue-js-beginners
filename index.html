@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <title>Vue js beginners</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ count }}</h1>
+
+        <button v-on:click="reduceCounter">-</button>
+        <button v-on:click="addCounter">+</button>
+
+        <p v-if="isEvenNumber">The current count is even</p>
+        <p v-else>The current count is odd</p>
+    </div>
+
+    <footer id="footer">
+        <p>copyright {{date.getFullYear()}}</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#footer',
+            data: {
+                date: new Date()
+            }
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                count: 0
+            },
+            methods: {
+                reduceCounter: function(){
+                    this.count--
+                },
+                addCounter: function(){
+                    this.count++
+                }
+            },
+            computed: {
+                isEvenNumber(){
+                    return this.count % 2 == 0
+                }
+            }
+        })
+    </script>
+</body>
+</html>
